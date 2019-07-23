@@ -1,3 +1,7 @@
+<?php
+require_once('functions.php');
+index();
+?>
 <header>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,29 +14,37 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Cód.:</th>
+            <th>Nº da Etiqueta</th>
             <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Telefone</th>
-            <th>Empresa</th>
-            <th>Setor</th>
-            <th>Função</th>
+            <th>Classe</th>
+            <th>Serial</th>
+            <th>Fabricante</th>
+            <th>Modelo</th>
+            <th>Nº NF</th>
+            <th>Aquisição</th>
+            <th>Custo</th>
+            <th>Vida Útil</th>
+            <th>Comentários</th>
         </tr>
         </thead>
         <tbody>
-        <?php if ($funcionarios) : ?>
-            <?php foreach ($funcionarios as $funcionario) : ?>
+        <?php if ($ativos) : ?>
+            <?php foreach ($ativos as $ativo) : ?>
                 <tr>
-                    <td><?php echo $funcionario['cod']; ?></td>
-                    <td><?php echo $funcionario['nome']; ?></td>
-                    <td><?php echo $funcionario['sobrenome']; ?></td>
-                    <td><?php echo $funcionario['telefone']; ?></td>
-                    <td><?php echo $funcionario['empresa']; ?></td>
-                    <td><?php echo $funcionario['setor']; ?></td>
-                    <td><?php echo $funcionario['funcao']; ?></td>
+                    <td><?php echo $ativo['n_etiqueta']; ?></td>
+                    <td><?php echo $ativo['nome_eqp']; ?></td>
+                    <td><?php echo $ativo['classe']; ?></td>
+                    <td><?php echo $ativo['serial_eqp']; ?></td>
+                    <td><?php echo $ativo['fabricante']; ?></td>
+                    <td><?php echo $ativo['modelo']; ?></td>
+                    <td><?php echo $ativo['nota_fiscal']; ?></td>
+                    <td><?php echo $ativo['data_aquisicao']; ?></td>
+                    <td><?php echo $ativo['custo']; ?></td>
+                    <td><?php echo $ativo['vida']; ?></td>
+                    <td><?php echo $ativo['comentario']; ?></td>
                     <td class="actions text-right">
-                        <a href="edit.php?cod=<?php echo $funcionario['cod']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
-                        <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-funcionario="<?php echo $funcionario['cod']; ?>">
+                        <a href="edit.php?n_etiqueta=<?php echo $ativo['n_etiqueta']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
+                        <a href="#" class="btn btn-sm btn-danger">
                             <i class="fa fa-trash"></i> Excluir
                         </a>
                     </td>
@@ -45,6 +57,13 @@
         <?php endif; ?>
         </tbody>
     </table>
-
 <?php include('modal.php'); ?>
-<?php include(FOOTER_TEMPLATE); ?>
+
+<script src="<?php echo BASEURL; ?>js/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="<?php echo BASEURL; ?>js/jquery-1.11.2.min.js"><\/script>')</script>
+
+<script src="<?php echo BASEURL; ?>js/bootstrap.min.js"></script>
+
+<script src="<?php echo BASEURL; ?>js/main.js"></script>
+<script src="<?php echo BASEURL; ?>js/main2.js"></script>
+<a href="../index.php" class="btn btn-sm btn-primary">Voltar</a>

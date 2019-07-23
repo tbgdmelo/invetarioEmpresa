@@ -14,28 +14,13 @@
     <h2>Ativo</h2>
     <div>
         <a href="ativo/add.php" class="btn btn-success"><i class="fas fa-plus-square"></i> Cadastrar</a>
-        <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-        <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Deletar</a>
+        <a href="ativo/index.php" class="btn btn-primary"><i class="fas fa-eye"></i> Visualizar Cadastros</a>
     </div>
-    <h2>Usuário</h2>
+    <h2>Funcionários</h2>
     <div>
-        <a href="usuario/add.php" class="btn btn-success"><i class="fas fa-plus-square"></i> Cadastrar</a>
-        <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-        <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Deletar</a>
+        <a href="funcionario/add.php" class="btn btn-success"><i class="fas fa-plus-square"></i> Cadastrar</a>
+        <a href="funcionario/index.php" class="btn btn-primary"><i class="fas fa-eye"></i> Visualizar Cadastros</a>
     </div>
-    <h2>Comodato</h2>
-    <div>
-        <a href="comodato/add.php" class="btn btn-success"><i class="fas fa-plus-square"></i> Cadastrar</a>
-        <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-        <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Deletar</a>
-    </div>
-    <h2>Fornecedor</h2>
-    <div>
-        <a href="fornecedor/add.php" class="btn btn-success"><i class="fas fa-plus-square"></i> Cadastrar</a>
-        <a href="#" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-        <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Deletar</a>
-    </div>
-
     <ul id="dados">
         <div><strong>DADOS GERAIS</strong></div>
         <li>Ativos Cadastrados: </li>
@@ -43,6 +28,17 @@
         <li>Comodatos Cadastrados: </li>
         <li>Fornecedores Cadastrados: </li>
     </ul>
+    <h2>Comodato</h2>
+    <div>
+        <a href="comodato/add.php" class="btn btn-success"><i class="fas fa-plus-square"></i> Cadastrar</a>
+        <a href="comodato/index.php" class="btn btn-primary"><i class="fas fa-eye"></i> Visualizar Cadastros</a>
+    </div>
+    <h2>Fornecedor</h2>
+    <div>
+        <a href="fornecedor/add.php" class="btn btn-success"><i class="fas fa-plus-square"></i> Cadastrar</a>
+        <a href="fornecedor/index.php" class="btn btn-primary"><i class="fas fa-eye"></i> Visualizar Cadastros</a>
+    </div>
+
 </body>
 
 
