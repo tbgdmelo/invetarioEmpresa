@@ -1,6 +1,7 @@
 <?php
 require_once('functions.php');
 add();
+listSetores();
 ?>
 
 
@@ -12,8 +13,10 @@ add();
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <script src="<?php echo BASEURL; ?>js/jquery.min.js"></script>
-    <script src="<?php echo BASEURL; ?>js/jquery311.min.js"></script>
+    <link rel="stylesheet" href="../css/combobox.css">
+    <script src="<?php echo BASEURL; ?>js/jquery341/combobox.js"></script>
+    <script src="<?php echo BASEURL; ?>js/jquery341/jquery.min.js"></script>
+    <script src="<?php echo BASEURL; ?>js/bootstrap340/bootstrap.min.js"></script>
 </head>
 <body>
 <h2>Novo Ativo</h2>
@@ -35,20 +38,25 @@ add();
 
     <div class="row">
         <div class="form-group col-md-3">
-            <label for="campo2">Setor:</label>
-            <select>
-                <option>Selecione...</option>
-            <?php if ($setores) : ?>
-                <?php foreach ($setores as $setor) : ?>
-                    <option value="<?php echo $setor['cod_set']; ?>"><?php echo $setor['nome']; ?></option>
-                <?php endforeach; ?>
-            <?php endif; ?>
-            </select>
+            <label for="campo3">Função:</label>
+            <input type="text" class="form-control" name="funcionario['funcao']" placeholder="Função do Funcionário">
         </div>
 
         <div class="form-group col-md-3">
-            <label for="campo3">Função:</label>
-            <input type="text" class="form-control" name="funcionario['funcao']" placeholder="Função do Funcionário">
+            <label for="campo2">Setor:</label>
+            <div class="row">
+                <div class="col-sm-3">
+                    <select class="form-control">
+                        <?php if ($setores) : ?>
+                            <?php foreach ($setores as $setor) : ?>
+                                <option value="<?php echo $setor['nome']; ?>"><?php echo $setor['nome']; ?></option>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                                <option>Nenhum registro encontrado.</option>
+                        <?php endif; ?>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
 

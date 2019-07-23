@@ -5,13 +5,18 @@ require_once(DBAPI);
 
 $funcionarios = null;
 $funcionario = null;
+
 $setores = null;
 $setor = null;
-
 
 function index() {
     global $funcionarios;
     $funcionarios = find_all('funcionarios');
+}
+
+function listSetores() {
+    global $setores;
+    $setores = find_all('setores');
 }
 
 function add() {
@@ -51,9 +56,4 @@ function delete($cod_func = null) {
     $funcionario = remove_funcionario('funcionarios', $cod_func);
 
     header('location: index.php');
-}
-
-function listSetores(){
-    global $setores;
-    $setores = find_all('setores');
 }
