@@ -20,7 +20,6 @@ function listSetores() {
 }
 
 function add() {
-
     if (!empty($_POST['funcionario'])) {
 
         $funcionario = $_POST['funcionario'];

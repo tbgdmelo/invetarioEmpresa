@@ -5,7 +5,36 @@ require_once(DBAPI);
 
 $ativos = null;
 $ativo = null;
+$comodatos = null;
+$users = null;
+$setores = null;
+$locais = null;
+$fornecedores = null;
 
+function listFornecedores(){
+    global $fornecedores;
+    $fornecedores = find_all('fornecedores');
+}
+
+function listLocais(){
+    global $locais;
+    $locais = find_all('local');
+}
+
+function listSetores() {
+    global $setores;
+    $setores = find_all('setores');
+}
+
+function listUsers() {
+    global $users;
+    $users = find_all('funcionarios');
+}
+
+function listComodatos() {
+    global $comodatos;
+    $comodatos = find_all('comodatos');
+}
 /**
  *  Listagem de Equipamento
  */

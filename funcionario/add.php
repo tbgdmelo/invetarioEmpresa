@@ -44,9 +44,8 @@ listSetores();
 
         <div class="form-group col-md-3">
             <label for="campo2">Setor:</label>
-            <div class="row">
-                <div class="col-sm-3">
-                    <select class="form-control">
+                    <select class="form-control" name="funcionario['setor']">
+                        <option onfocus="true">Selecione...</option>
                         <?php if ($setores) : ?>
                             <?php foreach ($setores as $setor) : ?>
                                 <option value="<?php echo $setor['nome']; ?>"><?php echo $setor['nome']; ?></option>
@@ -56,7 +55,6 @@ listSetores();
                         <?php endif; ?>
                     </select>
                 </div>
-            </div>
         </div>
     </div>
 

@@ -1,3 +1,13 @@
+<?php
+require_once('functions.php');
+add();
+listComodatos();
+listUsers();
+listSetores();
+listLocais();
+listFornecedores();
+?>
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -52,30 +62,75 @@
             </div>
 
             <div class="form-group col-md-2">
-                <label for="name">Comodato:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Comodato">
+                <label for="campo2">Comodato:</label>
+                <select class="form-control" name="equipamento['comodato']">
+                    <option onfocus="true">Selecione...</option>
+                    <?php if ($comodatos) : ?>
+                        <?php foreach ($comodatos as $comodato) : ?>
+                            <option value="<?php echo $comodato['nome']; ?>"><?php echo $comodato['nome']; ?></option>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <option>Nenhum registro encontrado.</option>
+                    <?php endif; ?>
+                </select>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="name">Local:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Local de Aquisição">
+                <select class="form-control" name="equipamento['local']">
+                    <option onfocus="true">Selecione...</option>
+                    <?php if ($locais) : ?>
+                        <?php foreach ($locais as $local) : ?>
+                            <option value="<?php echo $local['nome_l']; ?>"><?php echo $local['nome_l']; ?></option>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <option>Nenhum registro encontrado.</option>
+                    <?php endif; ?>
+                </select>
             </div>
 
             <div class="form-group col-md-3">
                 <label for="name">Localização Física:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Local Físico">
+                <select class="form-control" name="equipamento['local_f']">
+                    <option onfocus="true">Selecione...</option>
+                    <?php if ($setores) : ?>
+                        <?php foreach ($setores as $setor) : ?>
+                            <option value="<?php echo $setor['nome']; ?>"><?php echo $setor['nome']; ?></option>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <option>Nenhum registro encontrado.</option>
+                    <?php endif; ?>
+                </select>
             </div>
 
             <div class="form-group col-md-3">
-                <label for="name">Usuário:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Usuário Responsável">
+                <label for="campo2">Usuário:</label>
+                <select class="form-control" name="equipamento['usuario']">
+                    <option onfocus="true">Selecione...</option>
+                    <?php if ($users) : ?>
+                        <?php foreach ($users as $user) : ?>
+                            <option value="<?php echo $user['nome']; ?>"><?php echo $user['nome']; echo " ". $user['sobrenome']; ?></option>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <option>Nenhum registro encontrado.</option>
+                    <?php endif; ?>
+                </select>
             </div>
 
             <div class="form-group col-md-2">
                 <label for="name">Fornecedor:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Fornecedor">
+                <select class="form-control" name="equipamento['fornecedor']">
+                    <option onfocus="true">Selecione...</option>
+                    <?php if ($fornecedores) : ?>
+                        <?php foreach ($fornecedores as $fornecedor) : ?>
+                            <option value="<?php echo $fornecedor['nome']; ?>"><?php echo $fornecedor['nome']; ?></option>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <option>Nenhum registro encontrado.</option>
+                    <?php endif; ?>
+                </select>
             </div>
         </div>
 
@@ -87,7 +142,7 @@
 
             <div class="form-group col-md-3">
                 <label for="name">Data de Aquisição:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Nº Etiqueta">
+                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="DD/MM/YYYY">
             </div>
 
             <div class="form-group col-md-3">
@@ -101,9 +156,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="name">Comentários:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Comentários">
+                <textarea type="text" rows="5" class="form-control" name="equipamento['n_etiqueta']" placeholder="Comentários"></textarea>
             </div>
         </div>
         <div id="actions" class="row">
