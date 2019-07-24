@@ -1,6 +1,6 @@
 -- SCRIPT DE CRIAÇÃO DAS TABELAS
 -- ter 19 JULHO 2019
--- Ultima atualização: 19/07/2019
+-- Ultima atualização: 23/07/2019
 -- Thiago Braga de Melo - tbgdemelo@gmail.com
 
 -- -----------------------------------------------------
@@ -28,6 +28,16 @@ CREATE TABLE ativos(
     custo DOUBLE,
     vida INT,
     comentario VARCHAR (400),
+    id_filial INT,
+    id_funcionario INT,
+    id_comodato INT,
+    id_setor INT,
+
+    FOREIGN KEY (id_filial) REFERENCES grupo (cod_filial),
+    FOREIGN KEY (id_funcionario) REFERENCES  funcionarios (cod_func),
+    FOREIGN KEY (id_comodato) REFERENCES  comodatos(cod_comod),
+    FOREIGN KEY (id_setor) REFERENCES  setores(cod_set),
+
 	PRIMARY KEY (n_etiqueta)
 );
 
@@ -71,3 +81,13 @@ CREATE TABLE setores(
 	nome VARCHAR (40) NOT NULL,
 	PRIMARY KEY (cod_set)
 );
+
+-- -----------------------------------------------------
+-- TABELA COM AS INFO DOS LOCAIS DA FILIAL
+-- -----------------------------------------------------
+CREATE TABLE grupo(
+	cod_filial INT AUTO_INCREMENT NOT NULL,
+	nome VARCHAR (40) NOT NULL,
+	cidade VARCHAR(40),
+	PRIMARY KEY (cod_filial)
+)
