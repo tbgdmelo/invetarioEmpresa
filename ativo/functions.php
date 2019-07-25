@@ -18,7 +18,7 @@ function listFornecedores(){
 
 function listLocais(){
     global $locais;
-    $locais = find_all('local');
+    $locais = find_all('grupo');
 }
 
 function listSetores() {

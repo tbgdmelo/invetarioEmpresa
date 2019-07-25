@@ -54,7 +54,6 @@ listSetores();
                                 <option>Nenhum registro encontrado.</option>
                         <?php endif; ?>
                     </select>
-                </div>
         </div>
     </div>
 

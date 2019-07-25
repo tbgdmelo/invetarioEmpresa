@@ -12,78 +12,88 @@ listFornecedores();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>LEVANTAMENTO DE IMOBILIZADO</title>
+    <title>Cadastro de Ativo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#dinheiro").mask("999.999.990,00",{reverse: true})
+        $("#vida").mask("990")
+        $("#etiqueta").mask("000000")
+    })
+    </script>
 </head>
 <body>
 <h2>Novo Ativo</h2>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="add.php" method="post" enctype="multipart/form-data">
         <!-- area de campos do form -->
         <hr />
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="name">Nome:</label>
-                <input type="text" class="form-control" name="" autofocus="" placeholder="Nome do Ativo">
+                <input type="text" class="form-control" name="ativo['nome_eqp']" autofocus="" placeholder="Nome do Ativo">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="name">Classe:</label>
-                <input type="text" class="form-control" name="" placeholder="Classe do Ativo">
+                <input type="text" class="form-control" name="ativo['classe']" placeholder="Classe do Ativo">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="name">Serial:</label>
-                <input type="text" class="form-control" name="equipamento['serial_eqp']" placeholder="Nº Serial">
+                <input type="text" class="form-control" name="ativo['serial_eqp']" placeholder="Nº Serial">
             </div>
 
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
                 <label for="name">Nº Etiqueta:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Nº Etiqueta">
+                <input id="etiqueta" type="text" class="form-control" name="ativo['n_etiqueta']" placeholder="Nº Etiqueta (xxxxxx)">
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="campo2">Fabricante:</label>
-                <input type="text" class="form-control" name="equipamento['fabricante']" placeholder="Nome do Fabricante">
+                <input type="text" class="form-control" name="ativo['fabricante']" placeholder="Nome do Fabricante">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="campo3">Modelo:</label>
-                <input type="text" class="form-control" name="equipamento['modelo']" placeholder="Modelo do Equipamento">
+                <input type="text" class="form-control" name="ativo['modelo']" placeholder="Modelo do ativo">
             </div>
 
             <div class="form-group col-md-3">
-                <label for="campo1">Cor:</label>
-                <input type="text" class="form-control" name="equipamento['cor']" placeholder="Cor Predominante">
-            </div>
-
-            <div class="form-group col-md-2">
                 <label for="campo2">Comodato:</label>
-                <select class="form-control" name="equipamento['comodato']">
+                <select class="form-control" name="ativo['id_comodato']">
                     <option onfocus="true">Selecione...</option>
                     <?php if ($comodatos) : ?>
                         <?php foreach ($comodatos as $comodato) : ?>
-                            <option value="<?php echo $comodato['nome']; ?>"><?php echo $comodato['nome']; ?></option>
+                            <option value="<?php echo $comodato['cod_comod']; ?>"><?php echo $comodato['cod_comod'] ."- ". $comodato['nome']; ?></option>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <option>Nenhum registro encontrado.</option>
                     <?php endif; ?>
                 </select>
             </div>
+
+            <div class="form-group col-md-3">
+                <label for="name">Vida Útil Estimada:</label>
+                <input id="vida" type="text" class="form-control" name="ativo['vida']" placeholder="Tempo de Vida Estimado em Nº de Meses">
+            </div>
         </div>
 
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="name">Local:</label>
-                <select class="form-control" name="equipamento['local']">
+                <select class="form-control" name="ativo['id_filial']">
                     <option onfocus="true">Selecione...</option>
                     <?php if ($locais) : ?>
                         <?php foreach ($locais as $local) : ?>
-                            <option value="<?php echo $local['nome_l']; ?>"><?php echo $local['nome_l']; ?></option>
+                            <option value="<?php echo $local['cod_filial']; ?>"><?php echo  $local['cod_filial']."- ". $local['nome']; ?></option>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <option>Nenhum registro encontrado.</option>
@@ -93,11 +103,11 @@ listFornecedores();
 
             <div class="form-group col-md-3">
                 <label for="name">Localização Física:</label>
-                <select class="form-control" name="equipamento['local_f']">
+                <select class="form-control" name="ativo['id_setor']">
                     <option onfocus="true">Selecione...</option>
                     <?php if ($setores) : ?>
                         <?php foreach ($setores as $setor) : ?>
-                            <option value="<?php echo $setor['nome']; ?>"><?php echo $setor['nome']; ?></option>
+                            <option value="<?php echo $setor['cod_set']; ?>"><?php echo $setor['cod_set'] ."- ". $setor['nome']; ?></option>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <option>Nenhum registro encontrado.</option>
@@ -107,11 +117,11 @@ listFornecedores();
 
             <div class="form-group col-md-3">
                 <label for="campo2">Usuário:</label>
-                <select class="form-control" name="equipamento['usuario']">
+                <select class="form-control" name="ativo['id_funcionario']">
                     <option onfocus="true">Selecione...</option>
                     <?php if ($users) : ?>
                         <?php foreach ($users as $user) : ?>
-                            <option value="<?php echo $user['nome']; ?>"><?php echo $user['nome']; echo " ". $user['sobrenome']; ?></option>
+                            <option value="<?php echo $user['cod_func']; ?>"><?php echo $user['cod_func'] ."- ". $user['nome']; echo " ". $user['sobrenome']; ?></option>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <option>Nenhum registro encontrado.</option>
@@ -119,13 +129,13 @@ listFornecedores();
                 </select>
             </div>
 
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
                 <label for="name">Fornecedor:</label>
-                <select class="form-control" name="equipamento['fornecedor']">
+                <select class="form-control" name="ativo['id_fornecedor']">
                     <option onfocus="true">Selecione...</option>
                     <?php if ($fornecedores) : ?>
                         <?php foreach ($fornecedores as $fornecedor) : ?>
-                            <option value="<?php echo $fornecedor['nome']; ?>"><?php echo $fornecedor['nome']; ?></option>
+                            <option value="<?php echo $fornecedor['cod_forn']; ?>"><?php echo $fornecedor['cod_forn'] ."- ". $fornecedor['nome']; ?></option>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <option>Nenhum registro encontrado.</option>
@@ -137,28 +147,24 @@ listFornecedores();
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="name">Nota Fiscal:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Nº da Nota">
+                <input type="text" class="form-control" name="ativo['nota_fiscal']" placeholder="Nº da Nota">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="name">Data de Aquisição:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="DD/MM/YYYY">
+                <input value="<?php echo $ativo['data_aquisicao'];?>.ToString("yyyy-MM-dd")" type="date" class="form-control" name="ativo['data_aquisicao']" placeholder="DD/MM/YYYY">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="name">Custo de Aquisição:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Data Conforme a Nota">
+                <input id="dinheiro" type="text" class="form-control" name="ativo['custo']" placeholder="Custo Único do Ativo">
             </div>
 
-            <div class="form-group col-md-2">
-                <label for="name">Vida Útil Estimada:</label>
-                <input type="text" class="form-control" name="equipamento['n_etiqueta']" placeholder="Tempo de Vida Estimado">
-            </div>
         </div>
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="name">Comentários:</label>
-                <textarea type="text" rows="5" class="form-control" name="equipamento['n_etiqueta']" placeholder="Comentários"></textarea>
+                <textarea type="text" rows="5" class="form-control" name="ativo['comentario']" placeholder="Comentários"></textarea>
             </div>
         </div>
         <div id="actions" class="row">

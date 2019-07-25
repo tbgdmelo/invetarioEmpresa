@@ -20,9 +20,8 @@ CREATE TABLE ativos(
 	nome_eqp VARCHAR(50),
     classe VARCHAR(50),
 	serial_eqp VARCHAR (25) NOT NULL UNIQUE,
-	fabricante VARCHAR (30) NOT NULL,
+	fabricante VARCHAR (30),
 	modelo VARCHAR (20),
-	cor VARCHAR (15),
     nota_fiscal VARCHAR(10),
     data_aquisicao DATE,
     custo DOUBLE,
@@ -32,11 +31,13 @@ CREATE TABLE ativos(
     id_funcionario INT,
     id_comodato INT,
     id_setor INT,
+    id_fornecedor INT,
 
     FOREIGN KEY (id_filial) REFERENCES grupo (cod_filial),
     FOREIGN KEY (id_funcionario) REFERENCES  funcionarios (cod_func),
     FOREIGN KEY (id_comodato) REFERENCES  comodatos(cod_comod),
     FOREIGN KEY (id_setor) REFERENCES  setores(cod_set),
+    FOREIGN KEY (id_fornecedor) REFERENCES  fornecedores(cod_forn),
 
 	PRIMARY KEY (n_etiqueta)
 );
