@@ -15,7 +15,7 @@ $nameComod = null;
 $nameLocal = null;
 $nameLocalF = null;
 $nameUser = null;
-
+$nameForn = null;
 
 function listFornecedores(){
     global $fornecedores;
@@ -100,15 +100,16 @@ function delete($n_etiqueta = null) {
 /**
  * Buscar as informações pelo ID
  */
-function translate($nameC = null, $nameL = null, $nameLf = null, $nameU = null){
+function translate($idC = null, $idL = null, $idLf = null, $idU = null, $idForn = null){
     global $nameComod;
     global $nameLocal;
     global $nameLocalF;
     global $nameUser;
-    $nameComod = nameComod($nameC);
-    $nameLocal = nameLocal($nameL);
-    $nameLocalF = nameLocalF($nameLf);
-    $nameUser = nameUser($nameU);
-
+    global $nameForn;
+    $nameComod = nameComod($idC);
+    $nameLocal = nameLocal($idL);
+    $nameLocalF = nameLocalF($idLf);
+    $nameUser = nameUser($idU);
+    $nameForn = nameForn($idForn);
 }
 

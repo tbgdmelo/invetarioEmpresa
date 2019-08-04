@@ -6,7 +6,11 @@ listUsers();
 listSetores();
 listLocais();
 listFornecedores();
-translate();
+translate($ativo['id_comodato'],
+          $ativo['id_filial'],
+          $ativo['id_setor'],
+          $ativo['id_funcionario'],
+          $ativo['id_fornecedor']);
 ?>
 <head>
     <meta charset="utf-8">
@@ -68,7 +72,7 @@ translate();
             <div class="form-group col-md-3">
                 <label for="campo2">Comodato:</label>
                 <select class="form-control" name="ativo['id_comodato']">
-                    <option onfocus="true">Selecione...</option>
+                    <option onfocus="true"><?php echo $ativo['id_comodato'] ."- ".$nameComod ?></option>
                     <?php if ($comodatos) : ?>
                         <?php foreach ($comodatos as $comodato) : ?>
                             <option value="<?php echo $comodato['cod_comod']; ?>"><?php echo $comodato['cod_comod'] ."- ". $comodato['nome']; ?></option>
@@ -89,10 +93,10 @@ translate();
             <div class="form-group col-md-3">
                 <label for="name">Local:</label>
                 <select class="form-control" name="ativo['id_filial']">
-                    <option onfocus="true">Selecione...</option>
+                    <option onfocus="true"><?php echo $ativo['id_filial'] ."- ".$nameLocal ?></option>
                     <?php if ($locais) : ?>
                         <?php foreach ($locais as $local) : ?>
-                            <option value="<?php echo $local['cod_filial']; ?>"><?php echo  $local['cod_filial']."- ". $local['nome']; ?></option>
+                            <option value="<?php echo $local['cod_filial']; ?>"><?php echo  $local['cod_filial']."- ". $local['nome']." - ". $local['cidade']; ?></option>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <option>Nenhum registro encontrado.</option>
@@ -103,7 +107,7 @@ translate();
             <div class="form-group col-md-3">
                 <label for="name">Localização Física:</label>
                 <select class="form-control" name="ativo['id_setor']">
-                    <option onfocus="true">Selecione...</option>
+                    <option onfocus="true"><?php echo $ativo['id_setor'] ."- ".$nameLocalF ?></option>
                     <?php if ($setores) : ?>
                         <?php foreach ($setores as $setor) : ?>
                             <option value="<?php echo $setor['cod_set']; ?>"><?php echo $setor['cod_set'] ."- ". $setor['nome']; ?></option>
@@ -117,7 +121,7 @@ translate();
             <div class="form-group col-md-3">
                 <label for="campo2">Usuário:</label>
                 <select class="form-control" name="ativo['id_funcionario']">
-                    <option onfocus="true">Selecione...</option>
+                    <option onfocus="true"><?php echo $ativo['id_funcionario'] ."- ".$nameUser ?></option>
                     <?php if ($users) : ?>
                         <?php foreach ($users as $user) : ?>
                             <option value="<?php echo $user['cod_func']; ?>"><?php echo $user['cod_func'] ."- ". $user['nome']; echo " ". $user['sobrenome']; ?></option>
@@ -131,7 +135,7 @@ translate();
             <div class="form-group col-md-3">
                 <label for="name">Fornecedor:</label>
                 <select class="form-control" name="ativo['id_fornecedor']">
-                    <option onfocus="true">Selecione...</option>
+                    <option onfocus="true"><?php echo $ativo['id_fornecedor'] ."- ".$nameForn ?></option>
                     <?php if ($fornecedores) : ?>
                         <?php foreach ($fornecedores as $fornecedor) : ?>
                             <option value="<?php echo $fornecedor['cod_forn']; ?>"><?php echo $fornecedor['cod_forn'] ."- ". $fornecedor['nome']; ?></option>
@@ -164,7 +168,7 @@ translate();
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="name">Comentário:</label>
-                <input type="text" class="form-control" name="ativo['comentario']"  value="<?php echo $ativo['comentario'];?>" placeholder="Comentários">
+                <textarea type="text" rows="5" class="form-control" name="ativo['comentario']" placeholder="Comentários"><?php echo $ativo['comentario'];?></textarea>
             </div>
         </div>
 

@@ -36,12 +36,12 @@ index();
                     <td><?php echo $ativo['modelo']; ?></td>
                     <td><?php echo $ativo['serial_eqp']; ?></td>
                     <td><?php echo $ativo['n_etiqueta']; ?></td>
-                    <?php translate($ativo['id_comodato'], $ativo['id_filial'], $ativo['id_setor'], $ativo['id_funcionario']); ?>
+                    <?php translate($ativo['id_comodato'], $ativo['id_filial'], $ativo['id_setor'], $ativo['id_funcionario'], $ativo['id_fornecedor']); ?>
                     <td><?php echo $nameComod; ?></td>
                     <td><?php echo $nameLocal; ?></td>
                     <td><?php echo $nameLocalF; ?></td>
                     <td><?php echo $nameUser; ?></td>
-                    <td><?php echo $ativo['vida']. " meses"; ?></td>
+                    <td><?php echo $ativo['vida']. " Meses"; ?></td>
                     <td><?php echo $ativo['comentario']; ?></td>
                     <td class="actions text-right">
                         <a href="edit.php?n_etiqueta=<?php echo $ativo['n_etiqueta']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a></td>

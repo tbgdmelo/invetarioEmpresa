@@ -1,17 +1,8 @@
 -- SCRIPT DE CRIAÇÃO DAS TABELAS
 -- ter 19 JULHO 2019
--- Ultima atualização: 23/07/2019
+-- Ultima atualização: 01/08/2019
 -- Thiago Braga de Melo - tbgdemelo@gmail.com
-
--- -----------------------------------------------------
--- TABELA COM OS LOGINS NO SISTEMA
--- -----------------------------------------------------
-CREATE TABLE logins ( 
-	login VARCHAR(50) NOT NULL UNIQUE, 
-	senha VARCHAR(50) NOT NULL ,
-	PRIMARY KEY (login)
-);
-
+-- Version: 3.0
 
 -- -----------------------------------------------------
 -- TABELA COM AS INFO DOS FUNCIONARIOS
@@ -76,7 +67,7 @@ CREATE TABLE ativos(
                        modelo VARCHAR (20),
                        nota_fiscal VARCHAR(10),
                        data_aquisicao DATE,
-                       custo DOUBLE,
+                       custo VARCHAR(14),
                        vida INT,
                        comentario VARCHAR (400),
                        id_filial INT,

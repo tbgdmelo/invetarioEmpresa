@@ -106,6 +106,16 @@ function nameUser($id = null){
     return $nome;
 }
 
+function nameForn($id = null){
+    $database = open_database();
+
+    $sql = "SELECT * FROM fornecedores WHERE cod_forn = " . $id;
+
+    $result=mysqli_query($database, $sql);
+    $data = mysqli_fetch_assoc($result);
+    return $data['nome'];
+}
+
 function createPlani(){
         $database = open_database();
         $found = null;
@@ -340,7 +350,6 @@ function nameComod($id = null){
     $data = mysqli_fetch_assoc($result);
     return $data['nome'];
 }
-
 
 /**===========================================
  * FUNÇÕES PARA MANIPULAÇÃO DOS FORNECEDORES ||
