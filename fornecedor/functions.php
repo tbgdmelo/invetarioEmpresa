@@ -45,7 +45,7 @@ function edit() {
 function delete($cod_forn = null) {
 
     global $fornecedor;
-    $fornecedor = remove_fornecedor('fonecedores', $cod_forn);
+    $fornecedor = remove_fornecedor('fornecedores', $cod_forn);
 
     header('location: index.php');
 }

@@ -1,6 +1,7 @@
 <?php
 require_once('functions.php');
 edit();
+listSetores();
 ?>
 <head>
     <meta charset="utf-8">
@@ -10,7 +11,7 @@ edit();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
-<h2>Atualizar Dados do Funcionário</h2>
+<h2>Atualizar Dados do Funcionário <img src="../img/logo.png" alt="logo-tellescom" width='150' height='50'></h2>
 
 <form action="edit.php?cod_func=<?php echo $funcionario['cod_func']; ?>" method="post">
     <hr />
@@ -27,8 +28,17 @@ edit();
     </div>
     <div class="row">
         <div class="form-group col-md-3">
-            <label for="name">Setor:</label>
-            <input type="text" class="form-control" name="funcionario['setor']" value="<?php echo $funcionario['setor']; ?>">
+            <label for="campo2">Setor:</label>
+            <select class="form-control" name="funcionario['setor']">
+                <option onfocus="true">Selecione...</option>
+                <?php if ($setores) : ?>
+                    <?php foreach ($setores as $setor) : ?>
+                        <option value="<?php echo $setor['nome']; ?>"><?php echo $setor['nome']; ?></option>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <option>Nenhum registro encontrado.</option>
+                <?php endif; ?>
+            </select>
         </div>
 
         <div class="row">

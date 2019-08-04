@@ -11,6 +11,12 @@ $setores = null;
 $locais = null;
 $fornecedores = null;
 
+$nameComod = null;
+$nameLocal = null;
+$nameLocalF = null;
+$nameUser = null;
+
+
 function listFornecedores(){
     global $fornecedores;
     $fornecedores = find_all('fornecedores');
@@ -86,7 +92,23 @@ function edit() {
 function delete($n_etiqueta = null) {
 
     global $ativo;
-    $ativo = remove_eqp('ativos', $n_etiqueta);
+    $ativo = remove_ativo('ativos', $n_etiqueta);
 
     header('location: index.php');
 }
+
+/**
+ * Buscar as informações pelo ID
+ */
+function translate($nameC = null, $nameL = null, $nameLf = null, $nameU = null){
+    global $nameComod;
+    global $nameLocal;
+    global $nameLocalF;
+    global $nameUser;
+    $nameComod = nameComod($nameC);
+    $nameLocal = nameLocal($nameL);
+    $nameLocalF = nameLocalF($nameLf);
+    $nameUser = nameUser($nameU);
+
+}
+

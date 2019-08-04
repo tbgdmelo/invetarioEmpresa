@@ -7,7 +7,7 @@ $comodatos = null;
 $comodato = null;
 
 /**
- *  Listagem de Equipamento
+ *  Listagem de Comodatos
  */
 function index() {
     global $comodatos;
@@ -52,7 +52,7 @@ function edit() {
 }
 
 /**
- *  Exclusão de um ATIVO
+ *  Exclusão de um comodato
  */
 function delete($cod_comod = null) {
 

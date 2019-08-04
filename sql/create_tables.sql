@@ -12,35 +12,6 @@ CREATE TABLE logins (
 	PRIMARY KEY (login)
 );
 
--- -----------------------------------------------------
--- TABELA COM AS INFO DOS EQUIPAMENTOS
--- -----------------------------------------------------
-CREATE TABLE ativos(
-	n_etiqueta VARCHAR(14) NOT NULL UNIQUE,
-	nome_eqp VARCHAR(50),
-    classe VARCHAR(50),
-	serial_eqp VARCHAR (25) NOT NULL UNIQUE,
-	fabricante VARCHAR (30),
-	modelo VARCHAR (20),
-    nota_fiscal VARCHAR(10),
-    data_aquisicao DATE,
-    custo DOUBLE,
-    vida INT,
-    comentario VARCHAR (400),
-    id_filial INT,
-    id_funcionario INT,
-    id_comodato INT,
-    id_setor INT,
-    id_fornecedor INT,
-
-    FOREIGN KEY (id_filial) REFERENCES grupo (cod_filial),
-    FOREIGN KEY (id_funcionario) REFERENCES  funcionarios (cod_func),
-    FOREIGN KEY (id_comodato) REFERENCES  comodatos(cod_comod),
-    FOREIGN KEY (id_setor) REFERENCES  setores(cod_set),
-    FOREIGN KEY (id_fornecedor) REFERENCES  fornecedores(cod_forn),
-
-	PRIMARY KEY (n_etiqueta)
-);
 
 -- -----------------------------------------------------
 -- TABELA COM AS INFO DOS FUNCIONARIOS
@@ -91,4 +62,34 @@ CREATE TABLE grupo(
 	nome VARCHAR (40) NOT NULL,
 	cidade VARCHAR(40),
 	PRIMARY KEY (cod_filial)
-)
+);
+
+-- -----------------------------------------------------
+-- TABELA COM AS INFO DOS EQUIPAMENTOS
+-- -----------------------------------------------------
+CREATE TABLE ativos(
+                       n_etiqueta VARCHAR(14) NOT NULL UNIQUE,
+                       nome_eqp VARCHAR(50),
+                       classe VARCHAR(50),
+                       serial_eqp VARCHAR (25) NOT NULL UNIQUE,
+                       fabricante VARCHAR (30),
+                       modelo VARCHAR (20),
+                       nota_fiscal VARCHAR(10),
+                       data_aquisicao DATE,
+                       custo DOUBLE,
+                       vida INT,
+                       comentario VARCHAR (400),
+                       id_filial INT,
+                       id_funcionario INT,
+                       id_comodato INT,
+                       id_setor INT,
+                       id_fornecedor INT,
+
+                       FOREIGN KEY (id_filial) REFERENCES grupo (cod_filial),
+                       FOREIGN KEY (id_funcionario) REFERENCES  funcionarios (cod_func),
+                       FOREIGN KEY (id_comodato) REFERENCES  comodatos(cod_comod),
+                       FOREIGN KEY (id_setor) REFERENCES  setores(cod_set),
+                       FOREIGN KEY (id_fornecedor) REFERENCES  fornecedores(cod_forn),
+
+                       PRIMARY KEY (n_etiqueta)
+);

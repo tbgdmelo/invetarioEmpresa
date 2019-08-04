@@ -24,12 +24,12 @@ listFornecedores();
         $("#dinheiro").mask("999.999.990,00",{reverse: true})
         $("#vida").mask("990")
         $("#etiqueta").mask("000000")
+        $("#nf").mask("999999999")
     })
     </script>
 </head>
 <body>
-<h2>Novo Ativo</h2>
-
+<h2>Novo Ativo <img src="../img/logo.png" alt="logo-tellescom" width='150' height='50'></h2>
     <form action="add.php" method="post" enctype="multipart/form-data">
         <!-- area de campos do form -->
         <hr />
@@ -147,12 +147,12 @@ listFornecedores();
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="name">Nota Fiscal:</label>
-                <input type="text" class="form-control" name="ativo['nota_fiscal']" placeholder="Nº da Nota">
+                <input id="nf" type="text" class="form-control" name="ativo['nota_fiscal']" placeholder="Nº da Nota">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="name">Data de Aquisição:</label>
-                <input value="<?php echo $ativo['data_aquisicao'];?>.ToString("yyyy-MM-dd")" type="date" class="form-control" name="ativo['data_aquisicao']" placeholder="DD/MM/YYYY">
+                <input value="<?php echo $ativo['data_aquisicao'];?>.ToString('yyyy-MM-dd')" type="date" class="form-control" name="ativo['data_aquisicao']" placeholder="DD/MM/YYYY">
             </div>
 
             <div class="form-group col-md-3">

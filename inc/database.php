@@ -66,6 +66,88 @@ function save($table = null, $data = null) {
 
     close_database($database);
 }
+function countReg($table = null){
+    $database = open_database();
+    $sql = "SELECT COUNT(*) AS total FROM " . $table;
+    $result=mysqli_query($database, $sql);
+    $data = mysqli_fetch_assoc($result);
+    return $data['total'];
+}
+
+function nameLocal($id = null){
+    $database = open_database();
+
+    $sql = "SELECT * FROM grupo WHERE cod_filial = " . $id;
+
+    $result=mysqli_query($database, $sql);
+    $data = mysqli_fetch_assoc($result);
+    $nome = $data['nome'] ." - ". $data['cidade'];
+    return $nome;
+}
+
+function nameLocalF($id = null){
+    $database = open_database();
+
+    $sql = "SELECT * FROM setores WHERE cod_set = " . $id;
+
+    $result=mysqli_query($database, $sql);
+    $data = mysqli_fetch_assoc($result);
+    return $data['nome'];
+}
+
+function nameUser($id = null){
+    $database = open_database();
+
+    $sql = "SELECT * FROM funcionarios WHERE cod_func = " . $id;
+
+    $result=mysqli_query($database, $sql);
+    $data = mysqli_fetch_assoc($result);
+    $nome = $data['nome'] ." ". $data['sobrenome'];
+    return $nome;
+}
+
+function createPlani(){
+        $database = open_database();
+        $found = null;
+        try {
+            $sql = "SELECT  ativos.nome_eqp,
+                            ativos.classe,
+                            ativos.modelo,
+                            ativos.serial_eqp,
+                            ativos.n_etiqueta,
+                            c.nome AS nome_comodato,
+                            grupo.nome AS nome_filial,
+                            grupo.cidade AS cidade_filial,
+                            setores.nome AS nome_setor,
+                            funcionarios.nome AS nome_funcionario,
+                            funcionarios.sobrenome AS sobrenome_funcionario,
+                            f.nome AS nome_fornecedor,
+                            ativos.nota_fiscal,
+                            ativos.data_aquisicao,
+                            ativos.custo,
+                            ativos.vida,
+                            ativos.comentario
+
+                    FROM ativos
+                    INNER JOIN setores ON ativos.id_setor=setores.cod_set
+                    
+                    INNER JOIN grupo ON ativos.id_filial=grupo.cod_filial
+                    
+                    INNER JOIN funcionarios ON ativos.id_funcionario=funcionarios.cod_func
+                    
+                    INNER JOIN comodatos c on ativos.id_comodato=c.cod_comod
+                    
+                    INNER JOIN fornecedores f on ativos.id_fornecedor = f.cod_forn";
+            $result = $database->query($sql);
+            if ($result->num_rows > 0) {
+                $found = $result->fetch_all(MYSQLI_ASSOC);
+            }
+        }
+        catch (Exception $e){
+            header('location:../validation/index.php'); //Criar página de erro
+        }
+        return $found;
+}
 
 /**======================================
  * FUNÇÕES PARA MANIPULAÇÃO DOS ATIVOS ||
@@ -132,7 +214,7 @@ function find_ativo( $table = null, $n_etiqueta = null ) {
 
     try {
         if ($n_etiqueta) {
-            $sql = "SELECT * FROM " . $table . " WHERE cod_func = " . $n_etiqueta;
+            $sql = "SELECT * FROM " . $table . " WHERE n_etiqueta = " . $n_etiqueta;
             $result = $database->query($sql);
 
             if ($result->num_rows > 0) {
@@ -249,6 +331,16 @@ function find_comodato( $table = null, $cod_comod = null ) {
     return $found;
 }
 
+function nameComod($id = null){
+    $database = open_database();
+
+    $sql = "SELECT * FROM comodatos WHERE cod_comod = " . $id;
+
+    $result=mysqli_query($database, $sql);
+    $data = mysqli_fetch_assoc($result);
+    return $data['nome'];
+}
+
 
 /**===========================================
  * FUNÇÕES PARA MANIPULAÇÃO DOS FORNECEDORES ||
@@ -315,7 +407,7 @@ function find_fornecedor( $table = null, $cod_forn = null ) {
 
     try {
         if ($cod_forn) {
-            $sql = "SELECT * FROM " . $table . " WHERE cod_func = " . $cod_forn;
+            $sql = "SELECT * FROM " . $table . " WHERE cod_forn = " . $cod_forn;
             $result = $database->query($sql);
 
             if ($result->num_rows > 0) {
@@ -429,4 +521,5 @@ function find_funcionario( $table = null, $cod_func = null ) {
     close_database($database);
     return $found;
 }
+
 

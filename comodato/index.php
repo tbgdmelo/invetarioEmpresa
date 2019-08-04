@@ -10,6 +10,7 @@ index();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </header>
+<h2>Comodatos Cadastrados <img src="../img/logo.png" alt="logo-tellescom" width='150' height='50'></h2>
 <hr>
 <table class="table table-hover">
     <thead>
@@ -27,8 +28,8 @@ index();
                 <td><?php echo $comodato['nome']; ?></td>
                 <td><?php echo $comodato['cnpj']; ?></td>
                 <td class="actions text-right">
-                    <a href="edit.php?n_etiqueta=<?php echo $comodato['cod_comod']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
-                    <a href="#" class="btn btn-sm btn-danger">
+                    <a href="edit.php?cod_comod=<?php echo $comodato['cod_comod']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
+                    <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal-comod" data-comodato="<?php echo $comodato['cod_comod']; ?>">
                         <i class="fa fa-trash"></i> Excluir
                     </a>
                 </td>
@@ -48,6 +49,6 @@ index();
 
 <script src="<?php echo BASEURL; ?>js/bootstrap.min.js"></script>
 
-<script src="<?php echo BASEURL; ?>js/main.js"></script>
-<script src="<?php echo BASEURL; ?>js/main2.js"></script>
+<script src="<?php echo BASEURL; ?>js/modal_comod.js"></script>
 <a href="../index.php" class="btn btn-sm btn-primary">Voltar</a>
+<a href="add.php" class="btn btn-sm btn-success"><i class="fas fa-plus-square"></i> Novo Cadastro</a>

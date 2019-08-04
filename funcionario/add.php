@@ -4,7 +4,6 @@ add();
 listSetores();
 ?>
 
-
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -19,7 +18,7 @@ listSetores();
     <script src="<?php echo BASEURL; ?>js/bootstrap340/bootstrap.min.js"></script>
 </head>
 <body>
-<h2>Novo Ativo</h2>
+<h2>Novo Funcionário <img src="../img/logo.png" alt="logo-tellescom" width='150' height='50'></h2>
 
 <form action="add.php" method="post" enctype="multipart/form-data">
     <!-- area de campos do form -->
@@ -32,7 +31,7 @@ listSetores();
 
         <div class="form-group col-md-3">
             <label for="campo2">Sobrenome:</label>
-            <input type="text" class="form-control" name="funcionario['sobrenome']" placeholder="Sobrenome">
+            <input type="text" class="form-control" name="funcionario['sobrenome']" placeholder="Último Nome">
         </div>
     </div>
 

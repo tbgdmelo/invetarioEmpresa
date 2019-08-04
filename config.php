@@ -18,7 +18,7 @@ if ( !defined('ABSPATH') )
 
 /** caminho no server para o sistema **/
 if ( !defined('BASEURL') )
-    define('BASEURL', '/inv/');
+    define('BASEURL', '/ocolecionador/');
 
 /** caminho do arquivo com query**/
 if ( !defined('DBAPI') )
